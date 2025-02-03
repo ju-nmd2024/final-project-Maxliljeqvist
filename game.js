@@ -62,16 +62,8 @@ function startScreen() {
 function gameScreen() {
   background(255);
  
-  if (moving) {
-    if (keyIsDown(LEFT_ARROW)) {
-      x -= 10;
-    }
 
-    if (keyIsDown(RIGHT_ARROW)) {
-      x += 10;
-    }
-
-  }
+ 
 
   if (touchingPlatform){
     touchingPlatform = true;{
