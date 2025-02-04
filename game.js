@@ -1,3 +1,5 @@
+import Platform from "./platfrom.js";
+
 
 let x;
 let y = 0;
@@ -5,6 +7,8 @@ let touchingPlatform = "";
 let state = "game";
 let moving = true;
 let bollObj;
+let platformObj;
+let maxY = 600;
 
 class doodler {
   constructor(x, y) {
@@ -12,7 +16,7 @@ class doodler {
       this.y = y;
       this.speed = 0;   // Startar stillastående
       this.gravity = 0.4;  // Gravitationseffekt
-      this.bounceStrength = -10; // Konstant studs-hastighet
+      this.bounceStrength = -13; // Konstant studs-hastighet
   }
 
   draw() {
@@ -43,14 +47,24 @@ class doodler {
   }
 }
 
+let platforms = []; 
+
+
+
 function setup() {
   createCanvas(500,650);
   x = 200;
   y = 550;
 
   bollObj = new doodler(x, y);
-
+ platformObj = new Platform();
+ for (let i = 0; i < 5; i++) {
+   platforms.push(new Platform(500 - i * 100));
+ }
+ player = new doodler();
 }
+
+
 
 function startScreen() {
   background(0);
@@ -92,4 +106,15 @@ function draw() {
   gameScreen();
   bollObj.update();
   bollObj.draw();
+
+
+  if (player.y < maxY){
+    maxY = player.y;
+  }
+translate(0, height/2 - maxY);
+
+for (let platform of platforms){
+  platform.draw(); 
+}
+platformObj.draw();
 }
