@@ -16,8 +16,11 @@ class doodler {
       this.y = y;
       this.speed = 0;   // Startar stillastående
       this.gravity = 0.4;  // Gravitationseffekt
-      this.bounceStrength = -13; // Konstant studs-hastighet
+      this.bounceStrength = -20; // Konstant studs-hastighet
+
+      
   }
+
 
   draw() {
       fill(255, 0, 0);
@@ -36,14 +39,20 @@ class doodler {
       }
       if (moving) {
         if (keyIsDown(LEFT_ARROW)) {
-          this.x -= 10;
+          this.x -= 10;}
+          if (keyIsDown(LEFT_ARROW) && this.x < 35) {
+            this.x = 35;
+          }
         }
     
         if (keyIsDown(RIGHT_ARROW)) {
           this.x += 10;
         }
+        if (keyIsDown(RIGHT_ARROW) && this.x > 465) {
+          this.x = 465;
+        }
     
-      }
+      
   }
 }
 
@@ -79,20 +88,7 @@ function gameScreen() {
 
  
 
-  if (touchingPlatform){
-    touchingPlatform = true;{
-      y -= 250;
-      if (y < 200){
-        y = 200;
-      }
-    }
-touchingPlatform = false;{
-  y += 250;
-  if (y > 650){
-    y = 650;
-  }
-}
-  }
+  
 
   
 
@@ -116,5 +112,5 @@ translate(0, height/2 - maxY);
 for (let platform of platforms){
   platform.draw(); 
 }
-platformObj.draw();
+
 }
