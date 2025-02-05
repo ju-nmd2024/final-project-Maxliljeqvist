@@ -49,9 +49,10 @@ function draw() {
   gameScreen();
   bollObj.update();
   bollObj.draw();
-  cameraDown();
+  
 
   if (bollObj.speed < 0) { 
+    //line from copilot
     score += Math.abs(bollObj.speed);
   }
 
@@ -59,12 +60,13 @@ function draw() {
     maxY = bollObj.y;
   }
   translate(0, height / 2 - maxY);
-
+translate(0, width / 2 - bollObj.y);
   for (let platform of platforms) {
     platform.draw();
   }
 
-  
+  //ser till att score texten stannar på (10,30) i realtion till canvasen
+  resetMatrix();
   fill(0);
   textSize(24);
   text("Score: " + Math.floor(score), 10, 30);
@@ -74,11 +76,3 @@ function draw() {
 
 
 
-function cameraDown() {
-  if (bollObj.y < 300) {
-    bollObj.y = 300;
-    for (let platform of platforms) {
-      platform.y += 10;
-    }
-  }
-}
