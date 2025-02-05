@@ -5,6 +5,7 @@ export default class doodler {
         this.speed = 0;   // Startar stillastående
         this.gravity = 0.4;  // Gravitationseffekt
         this.bounceStrength = -20; // Konstant studs-hastighet
+        this.height = 70;
   
         
     }
@@ -18,6 +19,7 @@ export default class doodler {
     update() {
         this.speed += this.gravity; // Lägg till gravitation till hastigheten
         this.y += this.speed;       // Uppdatera bollens position
+        
   
         // Om bollen träffar marken
         if (this.y >= 600) { 
