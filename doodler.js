@@ -40,6 +40,8 @@ update() {
           if (this.x >= minX && this.x <= maxX) {
             this.jump();
           }
+          if (platform.breakable === true) {
+            platforms.splice(i, 1);}
         }
       }
 }
