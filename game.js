@@ -34,7 +34,7 @@ function gameScreen() {
 function draw() {
   background(255);
   
-  translate(0, height / 2 - bollObj.y);
+  
   bollObj.draw();
   cameraDown();
   
@@ -57,6 +57,10 @@ function draw() {
   }
 
   platforms = platforms.filter(platform => platform.y < 650);
+
+  if (bollObj.y < 300) {
+    bollObj.y = 300;}
+
   function cameraDown() {
     if (bollObj.y < 300) {
       for (let platform of platforms) {
