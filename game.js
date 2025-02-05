@@ -6,10 +6,11 @@ let gap;
 let score = 0;
 let platforms = [];
 
+
 function setup() {
   createCanvas(500, 650);
 
-  
+    
   bollObj = new doodler(200,600);
 
   let numbPlatforms = 6;
@@ -35,10 +36,11 @@ function draw() {
   
   translate(0, height / 2 - bollObj.y);
   bollObj.draw();
-
+  cameraDown();
   
   if (bollObj.y < platforms[platforms.length - 1].y + 200) {
     platforms.push(new Platform(random(width), platforms[platforms.length - 1].y - gap));
+    
   }
 
   
@@ -46,13 +48,23 @@ function draw() {
     score += Math.abs(bollObj.velocity);
   }
 
-  
+
+
 
   for (let platform of platforms) {
+    
     platform.draw();
   }
 
-  
+  platforms = platforms.filter(platform => platform.y < 650);
+  function cameraDown() {
+    if (bollObj.y < 300) {
+      for (let platform of platforms) {
+        platform.y += 5; // Move platforms down
+      }
+    }
+  }
+
   resetMatrix();
   fill(0);
   textSize(24);

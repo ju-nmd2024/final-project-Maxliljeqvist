@@ -2,11 +2,11 @@ export default class doodler {
   constructor() {
     this.x = width / 2;
     this.y = height / 2;
-    this.height = 60;
+    this.height = 40;
     this.width = 40;
 
     this.velocity = 0;
-    this.gravity = 0.15;
+    this.gravity = 0.3;
     this.jumpForce = 8; 
 }
 
