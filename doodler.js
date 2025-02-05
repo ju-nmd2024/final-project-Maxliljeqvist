@@ -4,7 +4,7 @@ export default class doodler {
         this.y = y;
         this.speed = 0;   // Startar stillastående
         this.gravity = 0.4;  // Gravitationseffekt
-        this.bounceStrength = -20; // Konstant studs-hastighet
+        this.bounceStrength = -13; // Konstant studs-hastighet
         this.height = 70;
   
         

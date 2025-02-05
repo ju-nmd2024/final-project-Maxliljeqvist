@@ -5,7 +5,7 @@ let x;
 let y = 0;
 let moving;
 let bollObj;
-let platformObj;
+let gap;
 let maxY = 600;
 let score = 0;
 
@@ -20,11 +20,12 @@ function setup() {
   y = 550;
 
   bollObj = new doodler(x, y);
- platformObj = new Platform();
- for (let i = 0; i < 100; i++) {
-   platforms.push(new Platform(900 - i * 100));
+ let numbPlatforms = 5;
+ gap = height / numbPlatforms;
+ for (let i = 1; i < 5; i++) {
+   platforms.push(new Platform(random(width), height -  i *gap));
  }
- player = new doodler();
+ 
 }
 
 function startScreen() {
