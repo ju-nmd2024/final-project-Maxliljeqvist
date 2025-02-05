@@ -1,10 +1,11 @@
 export default class Platform {
-    constructor(y) { 
-        this.x = random(1, 400); 
+    constructor(x, y) { 
+        this.x = x;
         this.y = y; 
-        this.width = 100;
+        this.width = 70;
         this.height = 15;
-
+        this.speed = 0;
+     
         if (random() < 0.3) {
             this.brittle = true;
         } else {
