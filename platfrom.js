@@ -5,7 +5,8 @@ export default class Platform {
         this.width = 70;
         this.height = 15;
         this.speed = 0;
-        this.brittle = brittle;
+        this.brittle = random() < 0.3;
+        this.broken = false;
 
 
      
@@ -28,7 +29,10 @@ export default class Platform {
             this.speed *= -1;
         }
 
-        fill(255, 0, 0); 
+        if (this.broken) return; 
+
+        fill(this.brittle ? 'red' : 'green'); 
         rect(this.x, this.y, this.width, this.height);
+          
     }
 }
