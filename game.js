@@ -8,9 +8,22 @@ let platforms = [];
 let state = "start";
 let survivalTime = 0; 
 
+
+function draw() {
+  if (state === "start") {
+    startScreen();
+  } else if (state === "game") {
+    gameScreen();
+  } else if (state === "result"){
+    resultScreen();
+  }
+  
+}
+setup();
+
 function setup() {
   createCanvas(500, 650);
-
+ 
     
   bollObj = new doodler(200,350);
 
@@ -18,7 +31,7 @@ function setup() {
     gap = height / numbPlatforms;
     for (let i = 1; i < 6; i++) {
       let brittle = random() < 0.3;
-      platforms.push(new Platform(random(width), height - i*gap));     
+      platforms.push(new Platform(random(width), height - i*gap, brittle));     
     }
 }
 
@@ -30,6 +43,7 @@ function startScreen() {
   text("Press Enter to Start", 300, 300);
   if (keyIsDown(ENTER)) {
     state = "game";
+    
   }
 }
 
@@ -50,10 +64,12 @@ function gameScreen() {
     
   }
 
-  
-  survivalTime += deltaTime / 1000; // Convert ms to seconds
-  scoreMultiplier = 1 + survivalTime * 0.2; // Score grows faster the longer you last
+  if (bollObj.y < 300) {
+    survivalTime += deltaTime / 1000; // Convert ms to seconds
+  scoreMultiplier = 1 + survivalTime * 3; // Score grows faster the longer you last
   score += scoreMultiplier * (deltaTime / 1000); // Increase score over time
+  }
+  
 
 
 
@@ -79,7 +95,7 @@ function gameScreen() {
   resetMatrix();
   fill(0);
   textSize(24);
-  text("Score: " + Math.floor(score), 10, 30);
+  text("Score: " + Math.floor(score), 60, 30);
   bollObj.update(platforms);
   if (bollObj.y > 650) {
     state = "result";
@@ -97,7 +113,7 @@ function resultScreen() {
 
   if (keyIsDown(ENTER)) {
     state = "game";
-    bollObj = new doodler(200, 350); 
+    bollObj = new doodler(250, 350); 
     score = 0;
     survivalTime = 0;
     scoreMultiplier = 1;
@@ -113,16 +129,7 @@ function resultScreen() {
 }
 
 
-function draw() {
-  if (state === "start") {
-    startScreen();
-  } else if (state === "game") {
-    gameScreen();
-  } else if (state === "result"){
-    resultScreen();
-  }
-  
-}
+
 
 
 
