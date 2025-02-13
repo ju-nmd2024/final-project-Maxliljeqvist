@@ -37,7 +37,7 @@ function setup() {
 }
 
 function startScreen() {
-  background(0);
+  background(0,0,0);
   fill(255);
   textSize(24);
   textAlign(CENTER);
