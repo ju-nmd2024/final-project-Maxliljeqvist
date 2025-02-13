@@ -8,6 +8,7 @@ let platforms = [];
 let state = "start";
 let survivalTime = 0; 
 
+draw();
 
 function draw() {
   if (state === "start") {
