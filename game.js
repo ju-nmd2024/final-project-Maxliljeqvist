@@ -9,6 +9,8 @@ let state = "start";
 let survivalTime = 0; 
 let scoreMultiplier = 1;
 
+
+
 function setup() {
   createCanvas(500, 650);
  
@@ -23,7 +25,7 @@ function setup() {
     }
 }
 
-
+window.setup = setup;
 
 
 function draw() {
@@ -37,7 +39,7 @@ function draw() {
   
 }
 
-
+window.draw = draw;
 
 
 function startScreen() {
