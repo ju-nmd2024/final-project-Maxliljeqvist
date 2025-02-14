@@ -7,6 +7,7 @@ let score = 0;
 let platforms = [];
 let state = "start";
 let survivalTime = 0; 
+let scoreMultiplier = 1;
 
 function setup() {
   createCanvas(500, 650);
