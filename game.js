@@ -8,20 +8,6 @@ let platforms = [];
 let state = "start";
 let survivalTime = 0; 
 
-draw();
-
-function draw() {
-  if (state === "start") {
-    startScreen();
-  } else if (state === "game") {
-    gameScreen();
-  } else if (state === "result"){
-    resultScreen();
-  }
-  
-}
-setup();
-
 function setup() {
   createCanvas(500, 650);
  
@@ -35,6 +21,23 @@ function setup() {
       platforms.push(new Platform(random(width), height - i*gap, brittle));     
     }
 }
+
+setup();
+
+
+function draw() {
+  if (state === "start") {
+    startScreen();
+  } else if (state === "game") {
+    gameScreen();
+  } else if (state === "result"){
+    resultScreen();
+  }
+  
+}
+
+draw();
+
 
 function startScreen() {
   background(0,0,0);
