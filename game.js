@@ -22,7 +22,7 @@ function setup() {
     }
 }
 
-setup();
+
 
 
 function draw() {
@@ -36,7 +36,7 @@ function draw() {
   
 }
 
-draw();
+
 
 
 function startScreen() {
